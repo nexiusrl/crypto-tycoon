@@ -5,12 +5,16 @@ interface FloatingButtonsProps {
   onOpenPortfolio?: () => void;
   onOpenNews?: () => void;
   onOpenSettings?: () => void;
+  onOpenSave?: () => void;
+  onOpenLoad?: () => void;
 }
 
 export const FloatingButtons: React.FC<FloatingButtonsProps> = ({
   onOpenPortfolio,
   onOpenNews,
   onOpenSettings,
+  onOpenSave,
+  onOpenLoad,
 }) => {
   const buttons = [
     {
@@ -30,6 +34,22 @@ export const FloatingButtons: React.FC<FloatingButtonsProps> = ({
         onOpenNews?.();
       },
       color: 'bg-blue-600 hover:bg-blue-500',
+    },
+    {
+      label: 'Save',
+      icon: '💾',
+      onClick: () => {
+        onOpenSave?.();
+      },
+      color: 'bg-cyan-600 hover:bg-cyan-500',
+    },
+    {
+      label: 'Load',
+      icon: '📂',
+      onClick: () => {
+        onOpenLoad?.();
+      },
+      color: 'bg-indigo-600 hover:bg-indigo-500',
     },
     {
       label: 'Settings',

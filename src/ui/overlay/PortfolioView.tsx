@@ -21,12 +21,12 @@ const PositionRow: React.FC<{ position: Position; currentPrice: number }> = ({ p
       <td className="px-3 py-2 text-xs text-white uppercase">{position.coinId}</td>
       <td className="px-3 py-2 text-xs text-white">{position.size}</td>
       <td className="px-3 py-2 text-xs text-white">{position.leverage}x</td>
-      <td className="px-3 py-2 text-xs text-slate-300">{formatCurrency(position.entryPrice / 100)}</td>
-      <td className="px-3 py-2 text-xs text-slate-300">{formatCurrency(currentPrice / 100)}</td>
+      <td className="px-3 py-2 text-xs text-slate-300">{formatCurrency(position.entryPrice)}</td>
+      <td className="px-3 py-2 text-xs text-slate-300">{formatCurrency(currentPrice)}</td>
       <td className={`px-3 py-2 text-xs font-medium ${isProfit ? 'text-emerald-400' : 'text-red-400'}`}>
-        {isProfit ? '+' : ''}{formatCurrency(pnl / 100)} ({formatPercentPlain(pnlPercent)})
+        {isProfit ? '+' : ''}{formatCurrency(pnl)} ({formatPercentPlain(pnlPercent)})
       </td>
-      <td className="px-3 py-2 text-xs text-slate-300">{formatCurrency(position.liquidationPrice / 100)}</td>
+      <td className="px-3 py-2 text-xs text-slate-300">{formatCurrency(position.liquidationPrice)}</td>
     </tr>
   );
 };
@@ -77,18 +77,18 @@ export const PortfolioView: React.FC = () => {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
         <div className="bg-slate-800 rounded-lg p-3">
           <p className="text-xs text-slate-400">AUM</p>
-          <p className="text-lg font-bold text-white">{formatCurrency(aum / 100)}</p>
+          <p className="text-lg font-bold text-white">{formatCurrency(aum)}</p>
         </div>
         <div className="bg-slate-800 rounded-lg p-3">
           <p className="text-xs text-slate-400">Unrealized P&L</p>
           <p className={`text-lg font-bold ${totalUnrealizedPnl >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
-            {totalUnrealizedPnl >= 0 ? '+' : ''}{formatCurrency(totalUnrealizedPnl / 100)}
+            {totalUnrealizedPnl >= 0 ? '+' : ''}{formatCurrency(totalUnrealizedPnl)}
           </p>
         </div>
         <div className="bg-slate-800 rounded-lg p-3">
           <p className="text-xs text-slate-400">Realized P&L</p>
           <p className={`text-lg font-bold ${totalRealizedPnl >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
-            {totalRealizedPnl >= 0 ? '+' : ''}{formatCurrency(totalRealizedPnl / 100)}
+            {totalRealizedPnl >= 0 ? '+' : ''}{formatCurrency(totalRealizedPnl)}
           </p>
         </div>
         <div className="bg-slate-800 rounded-lg p-3">
@@ -213,12 +213,12 @@ export const PortfolioView: React.FC = () => {
                     </td>
                     <td className="px-3 py-2 text-xs text-white uppercase">{pos.coinId}</td>
                     <td className="px-3 py-2 text-xs text-white">{pos.size}</td>
-                    <td className="px-3 py-2 text-xs text-slate-300">{formatCurrency(pos.entryPrice / 100)}</td>
+                    <td className="px-3 py-2 text-xs text-slate-300">{formatCurrency(pos.entryPrice)}</td>
                     <td className="px-3 py-2 text-xs text-slate-300">
-                      {pos.closePrice ? formatCurrency(pos.closePrice / 100) : '-'}
+                      {pos.closePrice ? formatCurrency(pos.closePrice) : '-'}
                     </td>
                     <td className={`px-3 py-2 text-xs font-medium ${pos.realizedPnl >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
-                      {pos.realizedPnl >= 0 ? '+' : ''}{formatCurrency(pos.realizedPnl / 100)}
+                      {pos.realizedPnl >= 0 ? '+' : ''}{formatCurrency(pos.realizedPnl)}
                     </td>
                     <td className="px-3 py-2 text-xs text-slate-400">
                       {pos.closedAt ? new Date(pos.closedAt).toLocaleDateString() : '-'}

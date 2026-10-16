@@ -24,14 +24,18 @@ export class MarketSimulator {
   private state: MarketState;
   private gameHour = 6;
 
-  constructor(seed?: number) {
+  constructor(seed?: number, volatilityMultiplier = 1) {
     this.rng = new SeededRNG(seed);
     this.priceGen = new PriceGenerator(seed);
     this.newsGen = new NewsGenerator(seed);
     this.eventGen = new EventGenerator(seed);
 
     this.state = {
-      coins: DEFAULT_COINS.map((c) => ({ ...c, priceHistory: [] })),
+      coins: DEFAULT_COINS.map((c) => ({
+        ...c,
+        volatility: c.volatility * volatilityMultiplier,
+        priceHistory: [],
+      })),
       activeEvents: [],
       activeNews: [],
       newsHistory: [],

@@ -77,9 +77,9 @@ export function getDefaultGameState(difficulty: Difficulty = 'normal'): GameStat
 
 export function getDefaultPlayerState(difficulty: Difficulty = 'normal'): PlayerState {
   const startCash =
-    difficulty === 'easy' ? 100_00_00_00 : // $100,000
-    difficulty === 'hard' ? 1_00_00_00 :   // $1,000
-    10_00_00_00;                            // $10,000 (normal)
+    difficulty === 'easy' ? 100_000_00 : // $100,000
+    difficulty === 'hard' ? 1_000_00 :   // $1,000
+    10_000_00;                           // $10,000 (normal)
 
   return {
     cash: startCash,

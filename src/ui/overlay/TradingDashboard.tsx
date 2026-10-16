@@ -148,11 +148,11 @@ export const TradingDashboard: React.FC = () => {
 
       <div className="flex items-center justify-between">
         <div>
-          <span className="text-2xl font-bold text-white">{formatCurrency(price / 100)}</span>
+          <span className="text-2xl font-bold text-white">{formatCurrency(price)}</span>
           <span className="ml-2 text-slate-400">{coin?.symbol}</span>
         </div>
         <div className="text-sm text-slate-400">
-          Cash: <span className="text-white font-medium">{formatCurrency(cash / 100)}</span>
+          Cash: <span className="text-white font-medium">{formatCurrency(cash)}</span>
         </div>
       </div>
 
@@ -249,11 +249,11 @@ export const TradingDashboard: React.FC = () => {
           <div className="bg-slate-800 rounded p-2 text-xs space-y-1">
             <div className="flex justify-between">
               <span className="text-slate-400">Margin Required</span>
-              <span className="text-white">{formatCurrency(marginNeeded / 100)}</span>
+              <span className="text-white">{formatCurrency(marginNeeded)}</span>
             </div>
             <div className="flex justify-between">
               <span className="text-slate-400">Liquidation Price</span>
-              <span className="text-red-400">{formatCurrency(liqPrice / 100)}</span>
+              <span className="text-red-400">{formatCurrency(liqPrice)}</span>
             </div>
           </div>
 
@@ -287,16 +287,16 @@ export const TradingDashboard: React.FC = () => {
                         {pos.type.toUpperCase()} {pos.leverage}x
                       </span>
                       <span className={isProfit ? 'text-emerald-400' : 'text-red-400'}>
-                        {isProfit ? '+' : ''}{formatCurrency(pnl / 100)}
+                        {isProfit ? '+' : ''}{formatCurrency(pnl)}
                       </span>
                     </div>
                     <div className="flex justify-between text-slate-400 mt-1">
                       <span>Size: {pos.size}</span>
-                      <span>Entry: {formatCurrency(pos.entryPrice / 100)}</span>
+                      <span>Entry: {formatCurrency(pos.entryPrice)}</span>
                     </div>
                     <div className="flex justify-between text-slate-400">
-                      <span>Margin: {formatCurrency(pos.margin / 100)}</span>
-                      <span>Liq: {formatCurrency(pos.liquidationPrice / 100)}</span>
+                      <span>Margin: {formatCurrency(pos.margin)}</span>
+                      <span>Liq: {formatCurrency(pos.liquidationPrice)}</span>
                     </div>
                   </div>
                 );
@@ -310,12 +310,12 @@ export const TradingDashboard: React.FC = () => {
               <div className="flex justify-between">
                 <span className="text-slate-400">Margin Used</span>
                 <span className="text-white">
-                  {formatCurrency(positions.reduce((sum, p) => sum + (p.closedAt ? 0 : p.margin), 0) / 100)}
+                  {formatCurrency(positions.reduce((sum, p) => sum + (p.closedAt ? 0 : p.margin), 0))}
                 </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-400">Free Cash</span>
-                <span className="text-white">{formatCurrency(cash / 100)}</span>
+                <span className="text-white">{formatCurrency(cash)}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-400">Total Positions</span>
